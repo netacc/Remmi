@@ -6,7 +6,7 @@ var app = new Framework7({
   name: 'Remmi',
   // App id
   id: 'ru.remmi',
-  // Enable swipe panel
+  pushState : true,
   data: function () {
     return {
       user: {
