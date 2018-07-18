@@ -10,7 +10,8 @@ var app = new Framework7({
       materialRipple: false
   },
   view: {
-      pushState: true
+      pushState: true,
+      stackPages:true,
   },
   data: function () {
     return {
