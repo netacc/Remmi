@@ -6,7 +6,12 @@ var app = new Framework7({
   name: 'Remmi',
   // App id
   id: 'ru.remmi',
-  pushState : true,
+  touch: {
+      materialRipple: false
+  },
+  view: {
+      pushState: true
+  },
   data: function () {
     return {
       user: {
@@ -14,11 +19,6 @@ var app = new Framework7({
         lastName: 'Doe',
       },
     };
-  },
-  methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
-    },
   },
   routes: routes,
 });
