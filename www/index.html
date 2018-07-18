@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="lib/core/css/framework7.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/f7-icon.png">
   </head>
   <body class="color-theme-blue">
@@ -24,20 +25,13 @@
         <div class="panel panel-left panel-cover">
             <div class="page">
                 <div class="page-content">
-                    <div class="block-title">Левая панель</div>
+                    <div class="block-title">Remmi</div>
                     <div class="block">
                         <p>
                             <a href="#" class="panel-close">Закрыть панель</a>. 
                         </p>
                     </div>
                     <div class="block-title">Навигация по главному меню</div>
-                    <div class="list links-list">
-                        <ul>
-                            <li>
-                                <a href="/accordion/" class="panel-close">Accordion</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -51,7 +45,7 @@
                                 <i class="icon material-icons md-only">menu</i>
                             </a>
                         </div>
-                        <div class="title sliding">ServiceMix</div>
+                        <div class="title sliding">Remmy</div>
                         <div class="right">
                             <a class="link icon-only searchbar-enable" data-searchbar=".searchbar-components">
                                 <i class="icon f7-icons ios-only">search_strong</i>
@@ -61,7 +55,7 @@
                         <form data-search-container=".components-list" data-search-in="a" class="searchbar searchbar-expandable searchbar-components searchbar-init">
                             <div class="searchbar-inner">
                                 <div class="searchbar-input-wrap">
-                                    <input type="search" placeholder="Search components"/>
+                                    <input type="search" placeholder="Поиск"/>
                                         <i class="searchbar-icon"></i>
                                         <span class="input-clear-button"></span>
                                 </div>
@@ -84,27 +78,30 @@
                                 <ul>
                                     <li>
                                         <a class="item-content item-link" href="/ivan-tasks/">
-                                            <div class="item-media"><img src="img/avatar_circle_blue_36dp.png"/></div>
+                                            <div class="item-media">
+                                                <img src="img/avatar_circle_blue_36dp.png"/>
+                                                <!-- <i class="icon material-icons md-only color-blue size-48">account_circle</i> -->
+                                            </div>
                                             <div class="item-inner">
                                                 <div class="item-title">
                                                     <div class="item-header">Иван Иванов</div>
                                                     +7(999) 123-45-67
-                                                    <div class="item-footer">3 задачи</div>
+                                                    <div class="item-footer">2 задачи</div>
                                                 </div>
-                                                <div class="item-after">Edit</div>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="item-content item-link" href="/petr-tasks/">
-                                            <div class="item-media"><img src="img/avatar_circle_blue_36dp.png"/></div>
+                                            <div class="item-media">
+                                                <img src="img/avatar_circle_blue_36dp.png"/>
+                                            </div>
                                             <div class="item-inner">
                                                 <div class="item-title">
                                                     <div class="item-header">Петр Петров</div>
                                                     +7(999) 789-45-12
-                                                    <div class="item-footer">3 задачи</div>
+                                                    <div class="item-footer">2 задачи</div>
                                                 </div>
-                                                <div class="item-after">Edit</div>
                                             </div>
                                         </a>
                                     </li>
@@ -115,7 +112,7 @@
                     <div class="page-content tab" id="tab-2">
                         <div class="block">
                             <div class="list components-list searchbar-found">
-                                <ul>
+                                <!--<ul>
                                     <li>
                                         <a class="item-content item-link" href="/contact-list/">
                                             <div class="item-media"><i class="icon material-icons md-only">add_a_photo</i></div>
@@ -124,24 +121,25 @@
                                             </div>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </div>
                         </div>
                     </div>
                     <div class="page-content tab" id="tab-3">
                         <div class="block">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="list links-list">
-                                        <ul>
-                                            <li><a href="/about/">Задача 1</a></li>
-                                            <li><a href="#">Задача 2</a></li>
-                                            <li><a href="#">Задача 3</a></li>
-                                            <li><a href="#">Задача 4</a></li>
-                                            <li><a href="#">Задача 5</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="list components-list searchbar-found">
+                                <ul>
+                                    <li>
+                                        <a class="item-content item-link" href="/my-task/">
+                                            <div class="item-media">
+                                                <i class="icon material-icons md-only color-blue">event</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Моя Задача 1</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
