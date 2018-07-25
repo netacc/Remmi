@@ -1,1 +1,4 @@
 .idea/
+plugins/cordova-plugin-console/
+plugins/cordova-plugin-statusbar/
+plugins/cordova-plugin-whitelist/
