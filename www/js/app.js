@@ -37,7 +37,7 @@ var app = new Framework7({
 app.api = ({
     createUser: function(){
         app.request.postJSON('http://192.168.88.177:8989/rest/personservice/person/post/',
-            JSON.parse('{"person":[{"name":"Test Person", "age":100, "id":1}]}'),
+            JSON.parse('{"user":[{"name":"Test Person", "age":100, "id":1}]}'),
             function (data) {
                 console.log(data)
             });
