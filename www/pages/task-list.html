@@ -1,0 +1,48 @@
+<template>
+    <div class="page" data-name="new-task">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title sliding">Задачи</div>
+                <!--<div class="right">-->
+                    <!--<a class="link icon-only form-to-json link back">-->
+                        <!--<i class="icon f7-icons ios-only">done</i>-->
+                        <!--<i class="icon material-icons md-only">done</i>-->
+                    <!--</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class = "page-content">
+            <div class="list links-list">
+                <ul>
+                    {{#each taskItems.task}}
+                    <li>
+                        <a class="item-content" href="/task/{{id}}/">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    <div class="item-header">{{startDate}}</div>
+                                    <div class="item-footer">{{text}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="fab fab-right-bottom fab-morph color-blue">
+            <a href="/task/">
+            <i class="icon f7-icons ios-only">add</i>
+            <i class="icon material-icons md-only">add</i>
+            </a>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {}
+</script>

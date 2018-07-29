@@ -50,6 +50,11 @@ var routes = [
         path: '(/contact-list/)',
         url: './pages/contact-list.html',
     },
+    {
+        path: '(/contact-task-list/)',
+        url: './pages/contact-task-list.html',
+    },
+
     // Default route (404 page). MUST BE THE LAST
     {
         path: '(.*)',

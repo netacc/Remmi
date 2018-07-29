@@ -3,9 +3,9 @@ var app = new Framework7({
     // App root element
     root: '#app',
     // App Name
-    name: 'Remmi',
+    name: 'Remmy',
     // App id
-    id: 'ru.remmi',
+    id: 'ru.remmy',
     touch: {
       materialRipple: false
     },
@@ -20,64 +20,127 @@ var app = new Framework7({
     },
     routes: routes,
 
-    on: {
-        // each object key means same name event handler
-        pageInit: function (page) {
-
-        },
-        popupOpen: function (popup) {
-            // do something on popup open
-        },
-    },
-
 });
-;
+// // create searchbar
+// var searchbar = app.searchbar.create({
+//     el: '.searchbar',
+//     searchContainer: '.components-list',
+//     searchIn: '.item-title',
+//     on: {
+//         search(sb, query, previousQuery) {
+//             console.log(query, previousQuery);
+//         }
+//     }
+// });
+
+// var mainView = app.views.create('.view-main', {
+//     url: '/'
+// });
 
 
-app.api = ({
-    createUser: function(){
-        app.request.postJSON('http://192.168.88.177:8989/rest/personservice/person/post/',
-            JSON.parse('{"user":[{"name":"Test Person", "age":100, "id":1}]}'),
+app.api = {
+    taskId: 0,
+    createUser: function () {
+        app.request.postJSON('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/post/',
+            JSON.parse('{"user":{"name":"Test Person17", "age":1200, "id":17}}'),
             function (data) {
                 console.log(data)
             });
     },
-    updateUsers: function(){
-        app.request.get('http://192.168.88.177:8989/rest/personservice/person/get/', 0,
-            function (data, status, xhr) {
+    updateUser: function () {
+        app.request.postJSON('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/post/',
+            JSON.parse('{"user":{"name":"Test Person", "age":100, "id":1}}'),
+            function (data) {
                 console.log(data)
-                console.log(status)
+            });
+    },
+    updateUsers: function () {
+        app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/get/', {},
+            function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#template').html();
                 var compiledTemplate = Template7.compile(template);
                 var html = compiledTemplate(context);
-
+                $$('.main-content .user-list').remove();
                 $$('.main-content').append(html);
             },
-            function (xhr, status){
+            function (xhr, status) {
                 console.log(status)
-            })
+            });
     },
+
+    updateTasks: function () {
+        app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/', {},
+            function (data, status, xhr) {
+                var context = JSON.parse(data);
+                var template = $$('script#tasks-template').html();
+                var compiledTemplate = Template7.compile(template);
+                var html = compiledTemplate(context);
+                $$('.tasks-content .task-list').remove();
+                $$('.tasks-content').append(html);
+            },
+            function (xhr, status) {
+                console.log(status)
+            });
+    },
+    getTask: function( taskID ){
+        app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/'+taskID, {},
+        function (data, status, xhr) {
+            var context = JSON.parse(data);
+            var template = $$('script#task-template').html();
+            var compiledTemplate = Template7.compile(template);
+            var html = compiledTemplate(context);
+
+            $$('.task-content').append(html);
+        },
+        function (xhr, status) {
+            console.log(status)
+        });
+    },
+    createTask: function (strJSON) {
+        app.request.postJSON('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/post/',
+            JSON.parse(strJSON),
+            function (data) {
+                console.log(data)
+            });
+    },
+    offer: function(itemId){
+        app.api.taskId = itemId;
+        view.router.load({
+            url: 'pages/task.html',
+        });
+        return false;
+    },
+};
+//
+// $$('.notification-single').on('click', function () {
+//
+//     app.api.createUser();
+//     app.api.updateUsers();
+//     app.dialog.alert('User created');
+// });
+// $$('.notification-task').on('click', function () {
+//     app.api.createTask();
+//     app.api.updateTasks();
+//     app.dialog.alert('Task create');
+// });
+// $$('.notification-task').on('taphold', function () {
+//     app.dialog.alert('Tap hold fired!');
+// });
+//
+$$(document).on('click', '.form-to-json', function(){
+    var formJSON = app.form.convertToData('#new-task-form');
+    var strJSON = JSON.stringify({task: formJSON});
+
+    app.api.createTask(strJSON);
+    app.api.updateTasks();
 });
 
-;
+//
+app.api.updateUsers();
+app.api.updateTasks();
 
-$$('.notification-single').on('click', function () {
-    app.api.createUser();
-    app.api.updateUsers();
-    app.dialog.alert('User create');
-});
-app.request.get('http://192.168.88.177:8989/rest/personservice/person/get/', 0,
-    function (data, status, xhr) {
-        console.log(data)
-        console.log(status)
-        var context = JSON.parse(data);
-        var template = $$('script#template').html();
-        var compiledTemplate = Template7.compile(template);
-        var html = compiledTemplate(context);
-
-        $$('.main-content').append(html);
-    },
-    function (xhr, status){
-        console.log(status)
-    })
+$$(document).on('page:init', '.page[data-name="task"]', function (e, page) {
+    if (page.route.context.taskItem !== null) {
+    app.form.fillFromData('#new-task-form', page.route.context.taskItem.task)};
+})

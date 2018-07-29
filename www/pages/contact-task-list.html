@@ -1,0 +1,44 @@
+<div class="page">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Задача</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block">
+            <div class="list components-list searchbar-found infinite-scroll-preloader main-content">
+                <ul>
+                    <li>1111</li>
+                    <li>2222</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="contact-task-list" type="text/template7">
+        <ul>
+            {{#each task}}
+            <li>
+                <a class="item-content item-link" href="/task-id/">
+                    <div class="item-media">
+                        <img src="img/avatar_circle_blue_36dp.png"/>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <div class="item-header">{{text}}</div>
+                            Задача {{id}}
+                            <div class="item-footer">{{startDate}}</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+</div>

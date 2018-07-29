@@ -2,12 +2,12 @@
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(../material-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
     src: local('Material Icons'),
     local('MaterialIcons-Regular'),
-    url(../material-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-    url(../material-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
-    url(../material-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+    url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
+    url(../fonts/MaterialIcons-Regular.woff) format('woff'),
+    url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {
@@ -35,17 +35,18 @@
     font-feature-settings: 'liga';
 }
 
+
 @font-face {
     font-family: 'Framework7 Icons';
     font-style: normal;
     font-weight: 400;
-    src: url("../material-icons/iconfont/Framework7Icons-Regular.eot");
-    src: url("../material-icons/iconfont/Framework7Icons-Regular.woff2") format("woff2"),
-    url("../material-icons/iconfont/Framework7Icons-Regular.woff") format("woff"),
-    url("../material-icons/iconfont/Framework7Icons-Regular.ttf") format("truetype");
+    src: url("../fonts/Framework7Icons-Regular.eot");
+    src: url("../fonts/Framework7Icons-Regular.woff2") format("woff2"),
+    url("../fonts/Framework7Icons-Regular.woff") format("woff"),
+    url("../fonts/Framework7Icons-Regular.ttf") format("truetype");
 }
 
-.f7-icons {
+.f7-icons, .framework7-icons {
     font-family: 'Framework7 Icons';
     font-weight: normal;
     font-style: normal;
@@ -77,10 +78,6 @@
 }
 .icon-f7 {
     background: url(../img/f7-icon.png) no-repeat center;
-    background-size: cover;
-}
-.icon-vi {
-    background: url(../img/vi-icon.png) no-repeat center;
     background-size: cover;
 }
 
