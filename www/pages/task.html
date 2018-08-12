@@ -10,7 +10,8 @@
                 </div>
                 <div class="title sliding">Задача</div>
                 <div class="right">
-                    <a class="link icon-only form-to-json link back">
+                    <a class="link icon-only form-to-json link back" data-force="true">
+                        <!--<a href="index.html" class="back" data-force="true">-->
                         <i class="icon f7-icons ios-only">done</i>
                         <i class="icon material-icons md-only">done</i>
                     </a>
@@ -23,9 +24,19 @@
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
+                                <div class="item-title item-label">Заголовок</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" name="header" placeholder="Заголовок задачи">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
                                 <div class="item-title item-label">Дата задачи</div>
                                 <div class="item-input-wrap">
-                                    <input type="datetime-local" name="startDate" placeholder="Дата задачи">
+                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи">
                                 </div>
                             </div>
                         </div>
@@ -41,23 +52,19 @@
                         </div>
                     </li>
                     <li>
-                        <div class="item-content item-input">
-                            <div class="item-inner">
-                                <div class="item-title item-label">id</div>
-                                <div class="item-input-wrap">
-                                    <input type="number" name="id" placeholder="id задачи">
-                                </div>
-                            </div>
-                        </div>
+                        <input type="hidden" name="doerId" placeholder="Пользователь">
+                        <!--<div class="item-content item-input">-->
+                            <!--<div class="item-inner">-->
+                                <!--<div class="item-title item-label">userId</div>-->
+                                <!--<div class="item-input-wrap">-->
+                                    <!--<input type="hidden" name="doerId" placeholder="Пользователь">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </li>
-
                 </ul>
             </form>
         </div>
-        <!--<div class = "page-content">-->
-        <!--{{#taskItem.task}}-->
-        <!--<p>{{text}}</p>-->
-        <!--{{/taskItem.task}}-->
     </div>
 </template>
 <script>

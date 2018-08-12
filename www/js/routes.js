@@ -8,7 +8,7 @@ var routes = [
     //     url: './pages/task.html',
     // },
     {
-        path: '/task-list/:userId/',
+        path: '/task-list/:userId?/',
         async: function (routeTo, routeFrom, resolve, reject) {
             // Router instance
             var router = this;
@@ -21,8 +21,12 @@ var routes = [
 
             // Task ID from request
             var userId = routeTo.params.userId;
+            if (userId == undefined){
+                userId = 0;
+            }
              // Simulate Ajax Request
-             app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/', {},
+             // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/'+userId+'/list', {},
+             app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/list/'+userId, {},
                 function (data, status, xhr) {
                     // Hide Preloader
                     console.log(status);
@@ -38,7 +42,7 @@ var routes = [
                         {
                             context: {
                                 taskItems: strJSON,
-                                // user: user,
+                                user: userId,
                             }
                         }
                     );
@@ -53,18 +57,15 @@ var routes = [
         async: function (routeTo, routeFrom, resolve, reject) {
             // Router instance
             var router = this;
-            var undefParm = '{}'; //{"task":{"id":"","startDate":"","text":""}}
+
             // App instance
             var app = router.app;
 
             // Show Preloader
             app.preloader.show();
-
-            if (routeTo.params.taskId !== undefined) {
-            // Task ID from request
             var taskId = routeTo.params.taskId;
-            // Simulate Ajax Request
-            app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/' + taskId, {},
+            // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/' + taskId, {},
+            app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/' + taskId, {},
                 function (data, status, xhr) {
                     // Hide Preloader
                     console.log(status);
@@ -80,7 +81,7 @@ var routes = [
                         {
                             context: {
                                 taskItem: strJSON,
-                                // user: user,
+                                 // user: userId,
                             }
                         }
                     );
@@ -88,23 +89,40 @@ var routes = [
                 function (xhr, status) {
                     console.log(status)
                 });
-            } else {
-                app.preloader.hide();
-                strJSON = JSON.parse(undefParm);
-                resolve(
-                    {
-                        componentUrl: './pages/task.html',
-                    },
-                    {
-                        context: {
-                            taskItem: strJSON,
-                            // user: user,
-                        }
-                    }
-                );
             }
+    },
+    {
+        path: '/task/create/:userId?/',
+        async: function (routeTo, routeFrom, resolve, reject) {
+            // Router instance
+            var router = this;
 
-            }
+            // App instance
+            var app = router.app;
+
+            // Show Preloader
+            app.preloader.show();
+            var userId = routeTo.params.userId;
+
+            var undefParm = {"task":{"id":"","taskDate":"","text":"", "header":"", "doerId":userId}};
+
+
+            app.preloader.hide();
+            // strJSON = JSON.parse(undefParm);
+            resolve(
+                {
+                    componentUrl: './pages/task.html',
+                },
+                {
+                    context: {
+                        taskItem: undefParm,
+                        // user: userId,
+                    }
+                }
+            );
+
+
+        }
     },
     // {
     //     path: '/task2/:name/',

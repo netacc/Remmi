@@ -1,5 +1,6 @@
 <template>
     <div class="page" data-name="new-task">
+
         <div class="navbar">
             <div class="navbar-inner sliding">
                 <div class="left">
@@ -8,41 +9,40 @@
                         <span class="ios-only">Back</span>
                     </a>
                 </div>
-                <div class="title sliding">Задачи</div>
-                <!--<div class="right">-->
-                    <!--<a class="link icon-only form-to-json link back">-->
-                        <!--<i class="icon f7-icons ios-only">done</i>-->
-                        <!--<i class="icon material-icons md-only">done</i>-->
-                    <!--</a>-->
-                <!--</div>-->
             </div>
         </div>
+
         <div class = "page-content">
-            <div class="list links-list">
+
+            <div class="list">
                 <ul>
-                    {{#each taskItems.task}}
+                    {{#each taskItems.tasks}}
                     <li>
                         <a href="/task/{{id}}/" class="item-link item-content">
-                            <div class="item-media"><i class="icon material-icons md-only color-blue">today</i></div>
+                            <div class="chip-media chip bg-color-blue">
+                                {{doerInitials}}
+                            </div>
                             <div class="item-inner">
                                 <div class="item-title">
-                                    <div class="item-header">{{startDate}}</div>
-                                    {{text}}
+                                    <div class="item-header">{{taskDate}}</div>
+                                    {{header}}
                                 </div>
-                                <div class="item-after">Просмотр</div>
                             </div>
                         </a>
                     </li>
                     {{/each}}
                 </ul>
+
             </div>
             <div class="fab fab-right-bottom fab-morph color-blue">
-            <a href="/task/">
-            <i class="icon f7-icons ios-only">add</i>
-            <i class="icon material-icons md-only">add</i>
-            </a>
+                <a href="/task/create/{{user}}/">
+                    <i class="icon f7-icons ios-only">add</i>
+                    <i class="icon material-icons md-only">add</i>
+                </a>
             </div>
+
         </div>
+
     </div>
 </template>
 <script>
