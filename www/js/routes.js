@@ -9,6 +9,7 @@ var routes = [
     // },
     {
         path: '/task-list/:userId?/',
+
         async: function (routeTo, routeFrom, resolve, reject) {
             // Router instance
             var router = this;
@@ -26,7 +27,7 @@ var routes = [
             }
              // Simulate Ajax Request
              // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/'+userId+'/list', {},
-             app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/list/'+userId, {},
+             app.request.get('http://localhost:8080/service/tasklist/'+userId, {},
                 function (data, status, xhr) {
                     // Hide Preloader
                     console.log(status);
@@ -64,8 +65,9 @@ var routes = [
             // Show Preloader
             app.preloader.show();
             var taskId = routeTo.params.taskId;
+            var userId = routeTo.params.userId;
             // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/' + taskId, {},
-            app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/' + taskId, {},
+            app.request.get('http://localhost:8080/service/task/' + taskId, {},
                 function (data, status, xhr) {
                     // Hide Preloader
                     console.log(status);
@@ -81,7 +83,7 @@ var routes = [
                         {
                             context: {
                                 taskItem: strJSON,
-                                 // user: userId,
+                                doerName: taskId,
                             }
                         }
                     );

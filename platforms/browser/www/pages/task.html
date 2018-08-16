@@ -1,22 +1,74 @@
-<div class="page">
-    <div class="navbar">
-        <div class="navbar-inner sliding">
-            <div class="left">
-                <a href="#" class="link back">
-                    <i class="icon icon-back"></i>
-                    <span class="ios-only">Back</span>
-                </a>
+<template>
+    <div class="page" data-name="task">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title sliding">Задача</div>
+                <div class="right">
+                    <a class="link icon-only form-to-json link back" data-force="true">
+                        <!--<a href="index.html" class="back" data-force="true">-->
+                        <i class="icon f7-icons ios-only">done</i>
+                        <i class="icon material-icons md-only">done</i>
+                    </a>
+                </div>
             </div>
-            <div class="title">Задача №2</div>
+        </div>
+        <div class = "page-content">
+            <form class="list" id="new-task-form">
+                <ul>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Заголовок</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" name="header" placeholder="Заголовок задачи">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Дата задачи</div>
+                                <div class="item-input-wrap">
+                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Текст задачи</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" name="text" placeholder="Текст задачи">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="hidden" name="doerId" placeholder="Пользователь">
+                        <!--<div class="item-content item-input">-->
+                            <!--<div class="item-inner">-->
+                                <!--<div class="item-title item-label">userId</div>-->
+                                <!--<div class="item-input-wrap">-->
+                                    <!--<input type="hidden" name="doerId" placeholder="Пользователь">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </li>
+                </ul>
+            </form>
         </div>
     </div>
-    <div class="page-content">
-        <div class="block">
-            <div class="card card-outline">
-                <div class="card-header">Помощь петру</div>
-                <div class="card-content card-content-padding">Помочь Петру в автоматизации фронт-офиса.</div>
-                <div class="card-footer">Выполнить до 29.08.2018 18:00</div>
-            </div>
-        </div>
-    </div>
-</div>
+</template>
+<script>
+    return {}
+</script>
+
+

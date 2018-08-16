@@ -33,22 +33,22 @@ var app = new Framework7({
 //     }
 // });
 
-// var mainView = app.views.create('.view-main', {
-//     url: '/'
-// });
+var mainView = app.views.create('.view-main', {
+    url: '/'
+});
 
 
 app.api = {
     taskId: 0,
     createUser: function () {
-        app.request.postJSON('http://remmy-dev.bstdv.ru:8080/RemmyService/service/person/post/',
+        app.request.postJSON('http://localhost:8080/service/person/post/',
             JSON.parse('{"user":{"name":"Test Person17", "age":1200, "id":17}}'),
             function (data) {
                 console.log(data)
             });
     },
     updateUser: function () {
-        app.request.postJSON('http://remmy-dev.bstdv.ru:8080/RemmyService/service/person/post/',
+        app.request.postJSON('http://localhost:8080/service/person/post/',
             JSON.parse('{"user":{"name":"Test Person", "age":100, "id":1}}'),
             function (data) {
                 console.log(data)
@@ -56,7 +56,7 @@ app.api = {
     },
     updateUsers: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/get/', {},
-        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/user/', {},
+        app.request.get('http://localhost:8080/service/user/', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#template').html();
@@ -72,7 +72,7 @@ app.api = {
 
     updateLeftPanel: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/get/', {},
-        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/user/', {},
+        app.request.get('http://localhost:8080/service/user/', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#panel-template').html();
@@ -88,7 +88,7 @@ app.api = {
 
     updateTasks: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/0/list', {},
-            app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/tasklist/', {},
+            app.request.get('http://localhost:8080/service/tasklist/0', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#tasks-template').html();
@@ -103,7 +103,8 @@ app.api = {
     },
     updateUserTasks: function (userId) {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/0/list', {},
-        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/list/'+userId, {},
+
+        app.request.get('http://localhost:8080/service/tasklist/'+userId, {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#tasks-template').html();
@@ -117,7 +118,7 @@ app.api = {
             });
     },
     getTask: function( taskID ){
-        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/'+taskID, {},
+        app.request.get('http://localhost:8080/service/task/'+taskID, {},
         function (data, status, xhr) {
             var context = JSON.parse(data);
             var template = $$('script#task-template').html();
@@ -131,7 +132,14 @@ app.api = {
         });
     },
     createTask: function (strJSON) {
-        app.request.postJSON('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/post/',
+        app.request.postJSON('http://localhost:8080/service/task/post/',
+            JSON.parse(strJSON),
+            function (data) {
+                console.log(data)
+            });
+    },
+    updateTask: function (strJSON) {
+        app.request.postJSON('http://localhost:8080/service/task/put/',
             JSON.parse(strJSON),
             function (data) {
                 console.log(data)
@@ -161,20 +169,25 @@ app.api = {
 //     app.dialog.alert('Tap hold fired!');
 // });
 //
-$$(document).on('click', '.form-to-json', function(){
+
+function sleep(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms){}
+}
+$$(document).on('click', '.form-to-json', function(e, page){
     var formJSON = app.form.convertToData('#new-task-form');
     var strJSON = JSON.stringify({task: formJSON});
 
-    var t = JSON.parse(strJSON);
-    var userId = t.task.doerId;
     app.api.createTask(strJSON);
-    app.api.updateUserTasks(userId);
+    sleep(2000);
+    mainView.router.back({force: true, ignoreCache: true, reload: true});
 });
 
-//
 app.api.updateUsers();
-app.api.updateTasks();
+app.api.updateTasks(0);
 app.api.updateLeftPanel();
+
+
 
 $$(document).on('page:init', '.page[data-name="task"]', function (e, page) {
     if (page.route.context.taskItem !== null) {

@@ -8,10 +8,10 @@
                         <span class="ios-only">Back</span>
                     </a>
                 </div>
-                <div class="title sliding">Задача</div>
+                <div class="title sliding">{{doerName}}</div>
                 <div class="right">
-                    <a class="link icon-only form-to-json link back" data-force="true">
-                        <!--<a href="index.html" class="back" data-force="true">-->
+                    <a class="icon-only form-to-json">
+                    <!--<a href="/task-list/{{userId}}/" class=" back icon-only form-to-json">-->
                         <i class="icon f7-icons ios-only">done</i>
                         <i class="icon material-icons md-only">done</i>
                     </a>
@@ -24,9 +24,9 @@
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Заголовок</div>
+                                <div class="item-title item-label">Дата задачи</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="header" placeholder="Заголовок задачи">
+                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи">
                                 </div>
                             </div>
                         </div>
@@ -34,9 +34,9 @@
                     <li>
                         <div class="item-content item-input">
                             <div class="item-inner">
-                                <div class="item-title item-label">Дата задачи</div>
+                                <div class="item-title item-label">Заголовок</div>
                                 <div class="item-input-wrap">
-                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи">
+                                    <input type="text" name="header" placeholder="Заголовок задачи">
                                 </div>
                             </div>
                         </div>
@@ -53,14 +53,9 @@
                     </li>
                     <li>
                         <input type="hidden" name="doerId" placeholder="Пользователь">
-                        <!--<div class="item-content item-input">-->
-                            <!--<div class="item-inner">-->
-                                <!--<div class="item-title item-label">userId</div>-->
-                                <!--<div class="item-input-wrap">-->
-                                    <!--<input type="hidden" name="doerId" placeholder="Пользователь">-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                    </li>
+                    <li>
+                        <input type="hidden" name="id" placeholder="Задача">
                     </li>
                 </ul>
             </form>
