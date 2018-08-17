@@ -56,7 +56,7 @@ app.api = {
     },
     updateUsers: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/get/', {},
-        app.request.get('http://localhost:8080/service/user/', {},
+        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/user/', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#template').html();
@@ -72,7 +72,7 @@ app.api = {
 
     updateLeftPanel: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/person/get/', {},
-        app.request.get('http://localhost:8080/service/user/', {},
+        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/user/', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#panel-template').html();
@@ -88,7 +88,7 @@ app.api = {
 
     updateTasks: function () {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/0/list', {},
-            app.request.get('http://localhost:8080/service/tasklist/0', {},
+            app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/tasklist/0', {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#tasks-template').html();
@@ -104,7 +104,7 @@ app.api = {
     updateUserTasks: function (userId) {
         // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/0/list', {},
 
-        app.request.get('http://localhost:8080/service/tasklist/'+userId, {},
+        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/tasklist/'+userId, {},
             function (data, status, xhr) {
                 var context = JSON.parse(data);
                 var template = $$('script#tasks-template').html();
@@ -118,7 +118,7 @@ app.api = {
             });
     },
     getTask: function( taskID ){
-        app.request.get('http://localhost:8080/service/task/'+taskID, {},
+        app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/'+taskID, {},
         function (data, status, xhr) {
             var context = JSON.parse(data);
             var template = $$('script#task-template').html();
@@ -132,14 +132,14 @@ app.api = {
         });
     },
     createTask: function (strJSON) {
-        app.request.postJSON('http://localhost:8080/service/task/post/',
+        app.request.postJSON('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/post/',
             JSON.parse(strJSON),
             function (data) {
                 console.log(data)
             });
     },
     updateTask: function (strJSON) {
-        app.request.postJSON('http://localhost:8080/service/task/put/',
+        app.request.postJSON('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/put/',
             JSON.parse(strJSON),
             function (data) {
                 console.log(data)
