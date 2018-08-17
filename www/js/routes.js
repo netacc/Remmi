@@ -54,7 +54,7 @@ var routes = [
         },
     },
     {
-        path: '/task/:taskId?/',
+        path: '/task/:taskId?/:doerName?/',
         async: function (routeTo, routeFrom, resolve, reject) {
             // Router instance
             var router = this;
@@ -65,7 +65,10 @@ var routes = [
             // Show Preloader
             app.preloader.show();
             var taskId = routeTo.params.taskId;
-            var userId = routeTo.params.userId;
+            var doerName = '';
+            if (routeTo.params.doername !== undefined){
+                var doerName = routeTo.params.doername;
+            }
             // app.request.get('http://remmy-dev.bstdv.ru:8989/rest/personservice/task/get/' + taskId, {},
             app.request.get('http://remmy-dev.bstdv.ru:8080/RemmyService/service/task/' + taskId, {},
                 function (data, status, xhr) {
@@ -83,7 +86,7 @@ var routes = [
                         {
                             context: {
                                 taskItem: strJSON,
-                                doerName: taskId,
+                                doerName: doerName,
                             }
                         }
                     );
