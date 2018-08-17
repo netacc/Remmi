@@ -179,8 +179,8 @@ $$(document).on('click', '.form-to-json', function(e, page){
     var strJSON = JSON.stringify({task: formJSON});
 
     app.api.createTask(strJSON);
-    sleep(2000);
-    mainView.router.back({force: true, ignoreCache: true, reload: true});
+//    sleep(2000);
+//    mainView.router.back({force: true, ignoreCache: true, reload: true});
 });
 
 app.api.updateUsers();
