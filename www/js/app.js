@@ -175,10 +175,14 @@ function sleep(ms) {
     while (new Date() < ms){}
 }
 $$(document).on('click', '.form-to-json', function(e, page){
+    e.preventDefault();
+
+    console.log('Save');
     var formJSON = app.form.convertToData('#new-task-form');
     var strJSON = JSON.stringify({task: formJSON});
 
     app.api.createTask(strJSON);
+    console.log('Saved');
 //    sleep(2000);
 //    mainView.router.back({force: true, ignoreCache: true, reload: true});
 });

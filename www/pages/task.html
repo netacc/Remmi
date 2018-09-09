@@ -10,7 +10,7 @@
                 </div>
                 <div class="title sliding">{{doerName}}</div>
                 <div class="right">
-                    <a class="icon-only form-to-json">
+                    <a class="icon-only form-to-json back">
                     <!--<a href="/task-list/{{userId}}/" class=" back icon-only form-to-json">-->
                         <i class="icon f7-icons ios-only">done</i>
                         <i class="icon material-icons md-only">done</i>
@@ -26,7 +26,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Дата задачи</div>
                                 <div class="item-input-wrap">
-                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи">
+                                    <input type="datetime-local" name="taskDate" placeholder="Дата задачи" required validate>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-label">Текст задачи</div>
                                 <div class="item-input-wrap">
-                                    <input type="text" name="text" placeholder="Текст задачи">
+                                    <input type="text" name="text" placeholder="Текст задачи" required validate>
                                 </div>
                             </div>
                         </div>
